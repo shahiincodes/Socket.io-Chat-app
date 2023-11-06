@@ -19,19 +19,19 @@ import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
 // import ScrollToBottom from "react-scroll-to-bottom";
 
-const PublicChat = ({ socket }) => {
+const PublicChat = () => {
   const [message, setMessage] = React.useState("");
   const [messageList, setMessageList] = React.useState([]);
-  console.log(messageList)
-  const handleSendMessage = () => {
-    socket.emit("send-message", { id: socket.id, data: message });
-    setMessage("");
-  };
-  socket.on("server-message", (data) => {
-    setMessageList((prev) => {
-      return [...prev, data.data];
-    });
-  });
+  // console.log(messageList)
+  // const handleSendMessage = () => {
+  //   socket.emit("send-message", { id: socket.id, data: message });
+  //   setMessage("");
+  // };
+  // socket.on("server-message", (data) => {
+  //   setMessageList((prev) => {
+  //     return [...prev, data.data];
+  //   });
+  // });
   return (
     <Box
       sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
@@ -42,11 +42,11 @@ const PublicChat = ({ socket }) => {
         </Typography>
         {/* <ScrollToBottom className="scroll"> */}
           <CardContent sx={{ height: "50vh", bgcolor: "thistle" ,overflow:"auto" }}>
-            {messageList
+            {/* {messageList
               ? messageList.map((message, index) => (
                   <Typography key={index}>{message}</Typography>
                 ))
-              : "No One messaged yet..."}
+              : "No One messaged yet..."} */}
           </CardContent>
         {/* </ScrollToBottom> */}
         <CardActions disableSpacing>
@@ -61,7 +61,7 @@ const PublicChat = ({ socket }) => {
           <Button
             variant="contained"
             endIcon={<SendIcon />}
-            onClick={handleSendMessage}
+            // onClick={handleSendMessage}
           >
             Send
           </Button>
